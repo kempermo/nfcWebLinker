@@ -4,10 +4,23 @@ from smartcard.Exceptions import NoCardException, CardRequestTimeoutException, C
 import time
 import json
 import webbrowser
+import sys
+from pathlib import Path
+
+def resource_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return Path(sys._MEIPASS) / relative
+    return Path(__file__).parent / relative
+
+json_path = resource_path("assets/uids.json")
 
 #Textfile einlesen
-with open("uids.json") as f:
+with open(json_path) as f:
     urls = json.load(f)
+
+def on_close():
+    print("Closing app")
+    root.destroy()   # fully closes the app
 
 # Reader-Liste anzeigen
 reader = readers()
@@ -36,7 +49,7 @@ while True:
         # Nur neue Karten ausgeben
         if uid != previous_uid:
             print("Neue Karte erkannt! UID:", uid)
-            webbrowser.open(urls.get(uid, "https://example.com"))
+            webbrowser.open(urls.get(uid, uid), new=0)
             previous_uid = uid
 
         connection.disconnect()
