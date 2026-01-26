@@ -9,9 +9,9 @@ For Windows Users: You need to install Visual Studio Build Tools in order to be 
 
 
 ### Add nfc uids
-Is you know your uid open uids.json and add an entry
+If you know your NFC uid open uids.json and add an entry like so
 ```
-"5A4400FF014189":"https://www.url.com"
+"5A4400FF014189":"https://www.urltoopen.com"
 ```
 
 where the first string is the uid of the nfc and the second string is the url to call
