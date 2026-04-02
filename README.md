@@ -7,6 +7,10 @@ This project build on top of pyscard – find it here https://github.com/Ludovic
 
 For Windows Users: You need to install Visual Studio Build Tools in order to be able to compile pyscard. Find the build tools here https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
+Additionally you'll need to install: 
+```
+pip install requests
+```
 
 ### Add nfc uids
 If you know your NFC uid open uids.json and add an entry like so
